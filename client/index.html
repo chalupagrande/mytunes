@@ -26,10 +26,10 @@
       $(function(){
         // set up model objects
         var library = new Songs(songData);
-        var songq   = new SongQueue();
+        var songqueue = new SongQueue();
         var app = new AppModel({
             library: library,
-            songqueue : songq
+            songqueue : songqueue
         });
 
         // build a view for the top level of the whole app

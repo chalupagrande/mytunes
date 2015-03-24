@@ -2,14 +2,13 @@
 var SongQueue = Songs.extend({ 
 
   initialize: function(){
-   //render the songQueue
+    // render
   },
 
-  //render 
   render : function(){
-    //renders songqueue 
-  }
+   // call songqueueentryview or view
+  }  
 
-
-
+  // listens for enqueue and dequeue from songqueue array
+  // calls render
 });

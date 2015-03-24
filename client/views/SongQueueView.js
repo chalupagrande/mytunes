@@ -4,19 +4,20 @@ var SongQueueView = Backbone.View.extend({
   tagName: "table",
 
   initialize: function() {
-    // THIS re-renders SONG QUEUE
+    // this re-renders songQueue when "add" or "remove" is emitted
     this.collection.on('add remove', this.render, this)
+    // this renders an empty song queue on initialization
+    this.render()
     },
 
-    // this.render();
-    // this.on('change', function(){
-    //   console.log('trying to render')
-    //   this.render();
-    // })
-
   render: function(){
+    
+    // WHAT DOES THIS DO?
     this.$el.children().detach();
-
+    
+    // iterating over collection and instantiating new SongQueueEntryViews
+    // and assigning corresponding model to each SongQueueEntryViews
+    // and appending all of those to the DOM
     this.$el.html('<th>Song Queue</th>').append(
       this.collection.map(function(song){
         return new SongQueueEntryView({model: song}).render();

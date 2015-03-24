@@ -2,7 +2,7 @@
 var AppModel = Backbone.Model.extend({
 
   initialize: function(params){
-    this.set('currentSong', new SongModel());
+    this.set('currentSong', null);
     this.set('songQueue', new SongQueue());
 
     /* Note that 'this' is passed as the third argument. That third argument is
@@ -13,21 +13,20 @@ var AppModel = Backbone.Model.extend({
     getting called from the window (unless we override it, as we do here). */
 
     params.library.on('play', function(song){
+      // this change to this model generates a change event
       this.set('currentSong', song);
     }, this);
 
+    // translates intent of enqueque to add song in songQueue
+    // params is app
+    // this.model.get('library').on works as well *check index.html
     params.library.on('enqueue', function(song){
+      // collections emit an "add" event
       this.get('songQueue').add(song);
-      console.log(this.get('songQueue'));
-      this.trigger('enqueue')
-      
     }, this);
 
     params.library.on('dequeue', function(song){
       this.get('songQueue').remove(song);
-      console.log(this.get('songQueue'));
-
-      //emit an event that re-renders the songqueue
     }, this);
   }
 

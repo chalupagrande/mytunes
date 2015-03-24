@@ -4,7 +4,8 @@ var SongModel = Backbone.Model.extend({
   play: function(){
     this.trigger('play', this);
   },
-
+  
+  // triggers enqueue event that can be heard by library collection
   enqueue: function(){
     this.trigger('enqueue', this);
   },

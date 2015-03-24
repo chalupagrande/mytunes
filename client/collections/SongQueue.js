@@ -11,11 +11,13 @@ var SongQueue = Songs.extend({
     this.on('ended', function(){
       console.log('ended')
       this.at(0).dequeue();
-      this.playFirst();
+      if(this.length !== 0 ){
+        this.playFirst();
+      }
     })
 
     this.on('dequeue', function(song){
-      this.shift(song);
+      this.remove(song);
       console.log(this);
     })
     // render

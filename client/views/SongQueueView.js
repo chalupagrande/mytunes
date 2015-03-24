@@ -5,6 +5,10 @@ var SongQueueView = Backbone.View.extend({
 
   initialize: function() {
     this.render();
+    this.on('change', function(){
+      console.log('trying to render')
+      this.render();
+    })
   },
 
   render: function(){
@@ -15,6 +19,5 @@ var SongQueueView = Backbone.View.extend({
         return new SongQueueEntryView({model: song}).render();
       })
     );
-
   }
 });

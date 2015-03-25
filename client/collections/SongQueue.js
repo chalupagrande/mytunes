@@ -18,8 +18,14 @@ var SongQueue = Songs.extend({
 
   dequeue : function(song){
     console.log('dequeue')
-
+    
     this.remove(song);
+    
+    if( this.length === 0) { 
+      this.trigger('stop')
+    } else {
+      this.playFirst()
+    }
   },
 
   ended : function(){
